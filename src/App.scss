@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #111;
 }
 
 *, ::before, ::after{
@@ -12,4 +13,9 @@ body {
   margin: 0;
   padding: 0;
   outline: none;
+}
+
+button{
+  background: none;
+  border: none;
 }
