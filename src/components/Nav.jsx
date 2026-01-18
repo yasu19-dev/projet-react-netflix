@@ -26,6 +26,7 @@ function Nav() {
                 <img src="./images/avatar.jpg" alt="avatar" width='70' />
             </a>
         </div>
+        
 
     </div>
   )
