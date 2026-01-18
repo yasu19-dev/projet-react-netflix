@@ -1,16 +1,48 @@
-import React from 'react'
-import './Banner.scss'
+import React, { useEffect, useState } from 'react'
+import './Banner.scss';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import requests from '../config/Requests';
+import axios from 'axios';
+
 function Banner() {
+
+    const [movie, setMovie] = useState([]);
+    
+    useEffect(()=>{
+        async function fetchData() {
+            const request = await axios.get(requests.fetchTrending);
+        
+        setMovie(
+            request.data.results[
+                Math.floor(Math.random()* request.data.results.length -1)
+            ]
+        );
+        }
+        fetchData();
+    },[]);
+
+    function truncateText(string, n){
+       if (!string) return "";
+       return string.length > n ? string.substr(0, n - 1) + "..." : string;
+        
+    }
+    const bannerStyle = {
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center'
+    }
+    console.log(movie);
   return (
-    <header className="banner">
+    <header className="banner" style={bannerStyle}>
         <div className="banner__content">
-            <h1 className="banner_title">Titre</h1>
+            <h1 className="banner_title">{movie?.name || movie?.original_name || movie?.original_title || movie?.title}</h1>
             <p className="banner_description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. In quos amet explicabo modi asperiores rem possimus maiores voluptatem totam sint? Quasi, necessitatibus excepturi. Cum dolorum libero corrupti eligendi, modi est!
+                {truncateText(movie?.overview, 100)}
             </p>
             <div className="banner_buttons">
-                <button className="banner_button">Lecture</button>
-                <button className="banner_button">Plus d'infos</button>
+                <button className="banner_button banner_button--play"><PlayArrowIcon/> Lecture</button>
+                <button className="banner_button"><HelpOutlineIcon/> Plus d'infos</button>
                 
             </div>
         </div>

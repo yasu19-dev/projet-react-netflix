@@ -1,11 +1,12 @@
 // clé 8c4bb5309d515def71959092cf93e8f5
 // https://api.themoviedb.org/3/trending/movie/{time_window}
-import axios from 'axios';
+
 
 const API_KEY = '8c4bb5309d515def71959092cf93e8f5';
-const baseURL ='https://api.themoviedb.org/3/trending/movie/{time_window}';
+const baseURL ='https://api.themoviedb.org/3';
 
 const requests = {
+
     fetchTrending: `${baseURL}/trending/all/week?api_key=${API_KEY}&language=fr-FR`,
     fetchNetflixOriginals: `${baseURL}/discover/tv?api_key=${API_KEY}&with_networks=213`,
     fetchTopRated: `${baseURL}/movie/top_rated?api_key=${API_KEY}&language=fr-FR`,
