@@ -1,5 +1,7 @@
 
 import './App.scss';
+import Banner from './components/Banner';
+import Footer from './components/Footer';
 import Nav from './components/Nav';
 
 function App() {
@@ -8,10 +10,11 @@ function App() {
     <div className="App">
       {/* navbar */}
       <Nav/>
-      
     
-
       {/* banner */}
+      <Banner/>
+
+      <div className='test'></div>
 
 
       {/* row */}
@@ -21,6 +24,7 @@ function App() {
       {/* quick view */}
 
       {/* footer */}
+      <Footer/>
     </div>
   );
 }
