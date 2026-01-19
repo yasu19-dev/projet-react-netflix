@@ -19,18 +19,15 @@ function Row({ title, fetchUrl, isPoster }) {
             <h2 className="row_title">{title}</h2>
             <div className="row_images">
                 {movies.map((movie) => {
-                    // 1. On détermine quelle image utiliser
                     const imagePath = isPoster ? movie.poster_path : movie.backdrop_path;
 
-                    // condition pour ne pas avoir d'image vide
                     if (!imagePath) return null;
 
                     return (
                         <img
                             key={movie.id}
-                            // 3. On construit l'URL proprement
                             src={`${baseUrl}${imagePath}`}
-                            className={`row_image ${isPoster && "row_imagePoster"}`} // Optionnel : utile si tu veux styliser différemment les posters
+                            className={`row_image ${isPoster && "row_imagePoster"}`} 
                             alt={movie?.name || movie?.title || movie?.original_title}
                         />
                     );

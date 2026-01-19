@@ -4,10 +4,16 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import requests from '../config/Requests';
 import axios from 'axios';
+import QuickView from './QuickView';
 
 function Banner() {
 
     const [movie, setMovie] = useState([]);
+    const [popup, setPopUp] = useState(false);
+
+    function handlePopup(){
+        setPopUp(!popup);
+    }
     
     useEffect(()=>{
         async function fetchData() {
@@ -32,8 +38,10 @@ function Banner() {
         backgroundSize: 'cover',
         backgroundPosition: 'center center'
     }
-    console.log(movie);
+    // console.log(movie);
+    console.log(popup)
   return (
+    <>
     <header className="banner" style={bannerStyle}>
         <div className="banner__content">
             <h1 className="banner_title">{movie?.name || movie?.original_name || movie?.original_title || movie?.title}</h1>
@@ -42,11 +50,19 @@ function Banner() {
             </p>
             <div className="banner_buttons">
                 <button className="banner_button banner_button--play"><PlayArrowIcon/> Lecture</button>
-                <button className="banner_button"><HelpOutlineIcon/> Plus d'infos</button>
-                
+                <button className="banner_button" onClick={handlePopup} ><HelpOutlineIcon/> Plus d'infos</button> 
             </div>
         </div>
     </header>
+    <QuickView 
+            bannerStyle = {bannerStyle} 
+            movie={movie}  
+            popup={handlePopup} 
+            popupStatut={popup}
+        />
+    </>
+        
+    
   )
 }
 
