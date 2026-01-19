@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './Banner.scss';
+
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import requests from '../config/Requests';
 import axios from 'axios';
 import QuickView from './QuickView';
+import { Link } from 'react-router';
 
 function Banner() {
 
@@ -12,7 +14,7 @@ function Banner() {
     const [popup, setPopUp] = useState(false);
 
     function handlePopup(){
-        setPopUp(!popup);
+        popup ? setPopUp(false) : setPopUp(true);
     }
     
     useEffect(()=>{
@@ -49,8 +51,10 @@ function Banner() {
                 {truncateText(movie?.overview, 100)}
             </p>
             <div className="banner_buttons">
-                <button className="banner_button banner_button--play"><PlayArrowIcon/> Lecture</button>
-                <button className="banner_button" onClick={handlePopup} ><HelpOutlineIcon/> Plus d'infos</button> 
+                <Link to={`/video/${movie?.id}`}>
+                    <button className="banner_button banner_button--play"><PlayArrowIcon/> Lecture</button>
+                </Link>
+                    <button className="banner_button" onClick={handlePopup} ><HelpOutlineIcon/> Plus d'infos</button> 
             </div>
         </div>
     </header>
@@ -59,7 +63,7 @@ function Banner() {
             movie={movie}  
             popup={handlePopup} 
             popupStatut={popup}
-        />
+    />
     </>
         
     

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Row.scss';
 import axios from 'axios';
+import { Link } from 'react-router';
 
 function Row({ title, fetchUrl, isPoster }) {
     const [movies, setMovies] = useState([]);
@@ -24,14 +25,16 @@ function Row({ title, fetchUrl, isPoster }) {
                     if (!imagePath) return null;
 
                     return (
+                        <Link key={movie.id} to={`/video/${movie?.id}`}>
                         <img
-                            key={movie.id}
                             src={`${baseUrl}${imagePath}`}
                             className={`row_image ${isPoster && "row_imagePoster"}`} 
                             alt={movie?.name || movie?.title || movie?.original_title}
                         />
+                        </Link>
                     );
                 })}
+                
             </div>
         </div>
     );

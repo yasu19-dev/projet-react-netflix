@@ -17,6 +17,8 @@
     &__content{
         width:60vw;
         padding: 8vh 4% 0 4%;
+        position: relative;
+        z-index: 10;
         @media screen  and (min-width: 768px){
                    padding-top: 40vh;
                 }
@@ -60,6 +62,8 @@
         height:3rem;
         position: absolute;
         bottom: 0;
+        z-index: 0;
+        pointer-events: none;
         background: linear-gradient(180deg, rgba(31, 31, 31, 0),rgba(31, 31, 31, 0.5), #111);
         @media screen  and (min-width: 768px){
             height: 7rem;

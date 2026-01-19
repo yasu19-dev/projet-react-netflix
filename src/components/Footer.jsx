@@ -1,52 +1,67 @@
-import React from 'react'
+import React from 'react';
 import './Footer.scss';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import XIcon from '@mui/icons-material/X';
+import XIcon from '@mui/icons-material/X'; // Ou TwitterIcon selon ta version de MUI
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 function Footer() {
-  return (
-    <footer className="footer">
-        <div className="container">
-            <div className="footer__socials">
-                <a href="" className="footer_social"><FacebookIcon/></a>
-                <a href="" className="footer_social"><InstagramIcon/></a>
-                <a href="" className="footer_social"><XIcon/></a>
-                <a href="" className="footer_social"><YouTubeIcon/></a>
+    // Liste des liens réels du footer Netflix
+    const footerLinks = [
+        "Audiodescription",
+        "Centre d'aide",
+        "Cartes cadeaux",
+        "Presse",
+        "Relations Investisseurs",
+        "Recrutement",
+        "Conditions d'utilisation",
+        "Confidentialité",
+        "Informations légales",
+        "Préférences de cookies",
+        "Mentions légales",
+        "Nous contacter",
+    ];
+
+    const socialLinks = [
+        { icon: <FacebookIcon />, label: "Facebook" },
+        { icon: <InstagramIcon />, label: "Instagram" },
+        { icon: <XIcon />, label: "Twitter" },
+        { icon: <YouTubeIcon />, label: "Youtube" },
+    ];
+
+    return (
+        <footer className="footer">
+            <div className="container">
+                {/* Icônes Réseaux Sociaux */}
+                <div className="footer__socials">
+                    {socialLinks.map((social, index) => (
+                        <a 
+                            key={index} 
+                            href="/" 
+                            className="footer_social" 
+                            aria-label={social.label} 
+                        >
+                            {social.icon}
+                        </a>
+                    ))}
+                </div>
+
+                {/* Liste des liens générée dynamiquement */}
+                <ul className="footer__links">
+                    {footerLinks.map((link, index) => (
+                        <li className="footer_link" key={index}>
+                            <a href="/">{link}</a>
+                        </li>
+                    ))}
+                </ul>
+
+                {/* Copyright */}
+                <div className="footer_copy">
+                    &copy; 1997-{new Date().getFullYear()} Netflix, Inc.
+                </div>
             </div>
-            <ul className="footer__links">
-                <li className="footer_link">
-                    <a href="">Lien footer</a>
-                </li>
-                <li className="footer_link">
-                    <a href="">Lien footer</a>
-                </li>
-                <li className="footer_link">
-                    <a href="">Lien footer</a>
-                </li>
-                <li className="footer_link">
-                    <a href="">Lien footer</a>
-                </li>
-                <li className="footer_link">
-                    <a href="">Lien footer</a>
-                </li>
-                <li className="footer_link">
-                    <a href="">Lien footer</a>
-                </li>
-                <li className="footer_link">
-                    <a href="">Lien footer</a>
-                </li>
-                <li className="footer_link">
-                    <a href="">Lien footer</a>
-                </li>
-            </ul>
-            <div className="footer_copy">
-                Netflix - TOUS DROITS RÉSERVÉS
-            </div>
-        </div>
-    </footer>
-  )
+        </footer>
+    );
 }
 
-export default Footer
+export default Footer;
