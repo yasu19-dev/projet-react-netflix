@@ -58,12 +58,11 @@ function Nav({ user }) {
             <a href="/" className="nav_action"><NotificationsIcon/></a>
             
             <div className="nav_action" onClick={handleAvatarClick}>
-                {/* --- C'EST ICI QUE CA CHANGE --- */}
                 <img 
                     src={
                         user 
-                        ? "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" // Image Rouge (Connecté)
-                        : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" // Image Grise (Pas connecté)
+                        ? "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+                        : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" 
                     }
                     alt="avatar" 
                     className="nav_avatar"
