@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Nav.scss';
+import '../styles/Nav.scss';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';

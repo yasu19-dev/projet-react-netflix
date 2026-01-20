@@ -2,13 +2,11 @@ import React from 'react';
 // 1. On s'assure que useNavigate est importé
 import { useNavigate } from 'react-router-dom'; 
 import Nav from '../components/Nav';
-import './ProfileScreen.scss';
+import '../styles/ProfileScreen.scss';
 
 function ProfileScreen({ user, onLogout }) {
     // 2. On initialise le hook de navigation
     const navigate = useNavigate();
-
-    // ProfileScreen.jsx
 
 const handleLogout = () => {
     navigate('/'); 

@@ -1,5 +1,5 @@
 import React from 'react'
-import './QuickView.scss';
+import '../styles/QuickView.scss';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 function QuickView({bannerStyle,movie,popup,popupStatut }) {

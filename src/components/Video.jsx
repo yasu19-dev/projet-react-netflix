@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './Video.scss';
+import '../styles/Video.scss';
 
 function Video() {
     let { id } = useParams();
@@ -12,7 +12,7 @@ function Video() {
 
     // Fonction utilitaire pour trouver le bon trailer dans la liste
     const findTrailer = (videos) => {
-        // 1. On cherche un "Trailer" officiel
+        // 1."Trailer" officiel
         let trailer = videos.find(vid => vid.type === "Trailer" && vid.site === "YouTube");
         // 2. Si pas de Trailer, on cherche un "Teaser"
         if (!trailer) trailer = videos.find(vid => vid.type === "Teaser" && vid.site === "YouTube");
@@ -27,7 +27,6 @@ function Video() {
             setLoading(true);
             try {
                 // TENTATIVE 1 : On essaie l'URL pour les FILMS (/movie/)
-                // On demande Français (fr) ET Anglais (en)
                 const urlMovie = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=fr-FR&include_video_language=fr,en`;
                 
                 let response = await axios.get(urlMovie);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Banner.scss';
+import '../styles/Banner.scss';
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';

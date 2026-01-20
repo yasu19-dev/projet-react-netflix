@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './LoginScreen.scss'; // Tu peux réutiliser le CSS du Login précédent ou en faire un simple
+import '../styles/LoginScreen.scss'; // Tu peux réutiliser le CSS du Login précédent ou en faire un simple
 
 function LoginScreen({ onLogin }) {
     const [email, setEmail] = useState("");

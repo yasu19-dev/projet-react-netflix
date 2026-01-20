@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Row.scss';
+import '../styles/Row.scss';
 import axios from 'axios';
 import { Link } from 'react-router';
 

@@ -7,12 +7,12 @@ import Nav from './components/Nav';
 import Row from './components/Row';
 import Video from './components/Video';
 import requests from './config/Requests';
-// N'oublie pas d'importer tes nouveaux écrans !
+
 import LoginScreen from './screens/LoginScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
 function App() {
-  // 1. ÉTAT USER : On initialise en regardant dans le localStorage
+  // 1. ÉTAT USER : Gère l'utilisateur connecté
   const [user, setUser] = useState(() => {
      const savedUser = localStorage.getItem('netflix-user');
      return savedUser ? JSON.parse(savedUser) : null;
@@ -38,7 +38,6 @@ function App() {
           {/* ROUTE ACCUEIL */}
           <Route path="/" element={
             <>
-              {/* IMPORTANT : On passe 'user' à la Nav */}
               <Nav user={user} /> 
               <Banner />
               <Row 
@@ -59,10 +58,10 @@ function App() {
           {/* ROUTE VIDEO */}
           <Route path='/video/:id' element={<Video />} />
 
-          {/* ROUTE LOGIN : On passe la fonction login */}
+          {/* ROUTE LOGIN */}
           <Route path="/login" element={<LoginScreen onLogin={login} />} />
 
-          {/* ROUTE PROFILE : Protégée (Redirige si pas connecté) */}
+          {/* ROUTE PROFILE */}
           <Route path="/profile" element={
              user ? <ProfileScreen user={user} onLogout={logout} /> : <Navigate to="/login" />
           } />
