@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Ajout de useNavigate
 import axios from 'axios';
 import '../styles/Video.scss';
+import CloseIcon from '@mui/icons-material/Close'; // Import de l'icône
 
 function Video() {
     let { id } = useParams();
+    const navigate = useNavigate(); // Hook pour naviguer
     const [idMovie, setIdMovie] = useState(null);
     const [loading, setLoading] = useState(true);
     
-    const API_KEY = "8c4bb5309d515def71959092cf93e8f5"; // REMETS TA CLÉ ICI
+    const API_KEY = "8c4bb5309d515def71959092cf93e8f5"; 
 
     // Fonction utilitaire pour trouver le bon trailer dans la liste
     const findTrailer = (videos) => {
-        // 1."Trailer" officiel
         let trailer = videos.find(vid => vid.type === "Trailer" && vid.site === "YouTube");
-        // 2. Si pas de Trailer, on cherche un "Teaser"
         if (!trailer) trailer = videos.find(vid => vid.type === "Teaser" && vid.site === "YouTube");
-        // 3. Si rien, on prend la première vidéo YouTube qui vient
         if (!trailer) trailer = videos.find(vid => vid.site === "YouTube");
-        
         return trailer;
     }
 
@@ -32,12 +30,9 @@ function Video() {
                 let response = await axios.get(urlMovie);
                 let trailer = findTrailer(response.data.results);
 
-                // Si on a trouvé un trailer de film, on s'arrête là
                 if (trailer) {
                     setIdMovie(trailer.key);
                 } else {
-                    // TENTATIVE 2 : Si pas de trailer de film, on lance une erreur pour passer au catch
-                    // Ou on vérifie si la liste est vide, cela signifie peut-être que c'est une série
                     throw new Error("Pas un film ou pas de vidéo");
                 }
 
@@ -52,10 +47,10 @@ function Video() {
                     if (trailerTv) {
                         setIdMovie(trailerTv.key);
                     } else {
-                        setIdMovie(null); // Vraiment rien trouvé
+                        setIdMovie(null);
                     }
                 } catch (errTv) {
-                    setIdMovie(null); // Ni film, ni série, ou erreur réseau
+                    setIdMovie(null);
                 }
             } finally {
                 setLoading(false);
@@ -70,6 +65,14 @@ function Video() {
 
     return (
         <div className="video">
+            {/* --- NOUVEAU BOUTON FERMER --- */}
+            <button 
+                className="video__close" 
+                onClick={() => navigate(-1)} // Retour arrière
+            >
+                <CloseIcon fontSize="large" />
+            </button>
+
             {idMovie ? (
                 <iframe
                     src={`https://www.youtube.com/embed/${idMovie}?autoplay=1&mute=0`}
@@ -81,7 +84,7 @@ function Video() {
             ) : (
                 <div className="video_error">
                     <h3>Désolé, aucune bande-annonce disponible pour ce titre.</h3>
-                    <button className="video_btn" onClick={() => window.history.back()}>Retour</button>
+                    <button className="video_btn" onClick={() => navigate(-1)}>Retour</button>
                 </div>
             )}
         </div>

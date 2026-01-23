@@ -57,7 +57,7 @@ function Footer() {
 
                 {/* Copyright */}
                 <div className="footer_copy">
-                    &copy; 1997-{new Date().getFullYear()} Netflix, Inc.
+                    &copy; 1997-{new Date().getFullYear()} ReactFlix, Inc.
                 </div>
             </div>
         </footer>

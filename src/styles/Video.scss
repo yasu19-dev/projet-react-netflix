@@ -10,6 +10,30 @@
     left: 0;
     z-index: 2000; 
 
+    /* --- STYLE DU BOUTON FERMER --- */
+    &__close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: 2px solid white;
+        border-radius: 50%;
+        padding: 5px;
+        cursor: pointer;
+        z-index: 2005; /* Plus haut que la vidéo */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: white;
+            color: black;
+            transform: scale(1.1);
+        }
+    }
+
     iframe {
         width: 100%;
         height: 100%;
@@ -21,6 +45,17 @@
         text-align: center;
         h3 {
             font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        /* Style simple pour le bouton retour en cas d'erreur */
+        .video_btn {
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
         }
     }
 }

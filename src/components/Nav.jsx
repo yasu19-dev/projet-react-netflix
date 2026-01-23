@@ -38,8 +38,8 @@ function Nav({ user }) {
         </button>
         
         <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" 
-            alt="Netflix" 
+            src="./images/logo.png" 
+            alt="ReactFlix" 
             className='nav_logo' 
             onClick={() => navigate('/')} 
             style={{cursor: 'pointer'}}
